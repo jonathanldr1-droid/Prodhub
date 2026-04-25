@@ -41,7 +41,7 @@ body: JSON.stringify(rows)
 if(!r.ok){ const t = await r.text(); throw new Error(`UPSERT ${table}: ${t}`); }
 },
 async replace(table, rows){
-// Delete all then insert — cleanest way to handle reordering
+// Delete all then insert – cleanest way to handle reordering
 await fetch(`${SUPABASE_URL}/rest/v1/${table}?id=gte.0`, {
 method: “DELETE”,
 headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, Prefer: “return=minimal” }
@@ -71,7 +71,7 @@ const dbToLinks    = r => ({ icon: r.icon, color: r.color, title: r.title, sub: 
 
 const SHEET_ID = “1tFfJ7pWhhspDF_dq9NBwZn8fVu6baFl_jr5JyQAYED8”;
 const TLC_CSV_URL = “https://docs.google.com/spreadsheets/d/e/2PACX-1vTlhHW0vbv50NxDFZ8t_00vyvT1kAwMlw-3svNEd7kagYIrPDOpUUETElp6jI2fYgbBdTXDiIK0kwRD/pub?gid=0&single=true&output=csv”;
-// Proxy URL — uses allorigins to bypass CORS on published CSV
+// Proxy URL – uses allorigins to bypass CORS on published CSV
 function csvUrl(sheetId, gid=“0”){
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/pub?gid=${gid}&single=true&output=csv`;
 return `https://api.allorigins.win/get?url=${encodeURIComponent(base)}`;
@@ -87,7 +87,7 @@ let headerIdx = lines.findIndex(l => l.toLowerCase().includes(“name”));
 if(headerIdx < 0) headerIdx = 0;
 const headers = splitCSVRow(lines[headerIdx]).map(h => h.trim().toLowerCase());
 
-// Column index lookup — handles variations in header names
+// Column index lookup – handles variations in header names
 const col = (candidates) => {
 for(const c of candidates){
 const i = headers.findIndex(h => h.includes(c));
@@ -191,12 +191,12 @@ streaming: [
 };
 
 const DEFAULT_SVCS = [
-{ name:“Main Worship — First Service”,  day:0, h:9,  m:0,  dur:90,  s:“9:00 AM”,  e:“10:30 AM” },
-{ name:“Main Worship — Second Service”, day:0, h:11, m:0,  dur:90,  s:“11:00 AM”, e:“12:30 PM” },
+{ name:“Main Worship – First Service”,  day:0, h:9,  m:0,  dur:90,  s:“9:00 AM”,  e:“10:30 AM” },
+{ name:“Main Worship – Second Service”, day:0, h:11, m:0,  dur:90,  s:“11:00 AM”, e:“12:30 PM” },
 { name:“Tuesday Rehearsal”,             day:2, h:18, m:30, dur:150, s:“6:30 PM”,  e:“9:00 PM”  },
 ];
 
-// Standard Sunday rundown — shown every week
+// Standard Sunday rundown – shown every week
 const DEFAULT_SUNDAY_RUNDOWN = [
 { time:“6:00 AM”, name:“Load In / Call Time”,          role:“All Crew”,    note:“Doors locked, full team on floor” },
 { time:“7:00 AM”, name:“Line Check / Rehearsal”,       role:“Audio + Band”, note:”” },
@@ -208,16 +208,16 @@ const DEFAULT_SUNDAY_RUNDOWN = [
 ];
 
 const DEFAULT_SCHEDULE = [
-{ dot:“today”, date:“SUN 4/27”, name:“Main Worship — First Service”,  role:“Full Prod”, time:“9:00 AM” },
-{ dot:“today”, date:“SUN 4/27”, name:“Main Worship — Second Service”, role:“Full Prod”, time:“11:00 AM” },
+{ dot:“today”, date:“SUN 4/27”, name:“Main Worship – First Service”,  role:“Full Prod”, time:“9:00 AM” },
+{ dot:“today”, date:“SUN 4/27”, name:“Main Worship – Second Service”, role:“Full Prod”, time:“11:00 AM” },
 { dot:“up”,    date:“TUE 4/29”, name:“Tuesday Rehearsal”,             role:“Band + Prod”, time:“6:30 PM” },
-{ dot:“up”,    date:“SUN 5/4”,  name:“Main Worship — First Service”,  role:“Full Prod”, time:“9:00 AM” },
-{ dot:“up”,    date:“SUN 5/4”,  name:“Main Worship — Second Service”, role:“Full Prod”, time:“11:00 AM” },
+{ dot:“up”,    date:“SUN 5/4”,  name:“Main Worship – First Service”,  role:“Full Prod”, time:“9:00 AM” },
+{ dot:“up”,    date:“SUN 5/4”,  name:“Main Worship – Second Service”, role:“Full Prod”, time:“11:00 AM” },
 { dot:“up”,    date:“TUE 5/6”,  name:“Tuesday Rehearsal”,             role:“Band + Prod”, time:“6:30 PM” },
 ];
 
 const CHAT_MSG_DEFAULTS = [
-{ name:“Jon Elder”, initials:“JE”, color:”#e8b84b”, bg:“rgba(201,150,42,.14)”, bc:“rgba(201,150,42,.35)”, text:“Good morning team — let’s have a great service today. FOH check at 8:15.”, time:“8:02 AM”, me:false },
+{ name:“Jon Elder”, initials:“JE”, color:”#e8b84b”, bg:“rgba(201,150,42,.14)”, bc:“rgba(201,150,42,.35)”, text:“Good morning team – let’s have a great service today. FOH check at 8:15.”, time:“8:02 AM”, me:false },
 { name:“Mike K.”,   initials:“MK”, color:”#4f8ef7”, bg:“rgba(79,142,247,.12)”, bc:“rgba(79,142,247,.3)”,  text:“On it. Confidence monitors patched and gain structure set.”, time:“8:06 AM”, me:false },
 { name:“Sarah L.”,  initials:“SL”, color:”#4caf82”, bg:“rgba(76,175,130,.12)”, bc:“rgba(76,175,130,.3)”,  text:“ProPresenter ready, title slides cued for both services 🙏”, time:“8:09 AM”, me:false },
 ];
@@ -341,7 +341,7 @@ return (
 Prod<span style={{ color:GOLD }}>Hub</span>
 </div>
 <p style={{ fontSize:12, fontWeight:300, fontStyle:“italic”, color:”#9a9aa6”, lineHeight:1.65, maxWidth:340, borderLeft:`2px solid ${GOLD}`, paddingLeft:13 }}>
-“Whatever you do, work at it with all your heart, as working for the Lord.” — Col 3:23
+“Whatever you do, work at it with all your heart, as working for the Lord.” – Col 3:23
 </p>
 </div>
 <div style={{ padding:“clamp(18px,3vw,40px) clamp(20px,4vw,44px)”, display:“flex”, flexDirection:“column”, gap:14 }}>
@@ -371,7 +371,7 @@ Prod<span style={{ color:GOLD }}>Hub</span>
 {svcs.map((s,i) => (
 <div key={i} onClick={() => setSelSvc(i)} style={{ background: i===selSvc ? “rgba(201,150,42,.1)” : “#141418”, border:`1px solid ${i===selSvc ? GOLD : "rgba(255,255,255,.06)"}`, borderRadius:10, padding:“8px 5px”, textAlign:“center”, cursor:“pointer” }}>
 <div style={{ fontFamily:”‘JetBrains Mono’,monospace”, fontSize:9, color:”#6b6b75”, textTransform:“uppercase” }}>{DAYS[s.day]}</div>
-<div style={{ fontSize:11, fontWeight:600, margin:“2px 0” }}>{String(s.name).split(”—”)[0].trim().split(” “).slice(-2).join(” “)}</div>
+<div style={{ fontSize:11, fontWeight:600, margin:“2px 0” }}>{String(s.name).split(”–”)[0].trim().split(” “).slice(-2).join(” “)}</div>
 <div style={{ fontFamily:”‘JetBrains Mono’,monospace”, fontSize:10, color:GOLD }}>{s.s}</div>
 </div>
 ))}
@@ -438,7 +438,7 @@ Prod<span style={{ color:GOLD }}>Hub</span>
 }
 
 /* ══════════════════════════════════════════════════════
-MIC ASSIGNMENT TAB — matches the spreadsheet picture
+MIC ASSIGNMENT TAB – matches the spreadsheet picture
 ══════════════════════════════════════════════════════ */
 function VocalTag({ vocal }){
 if(!vocal || vocal === “none”) return <span style={{ color:”#6b6b75”, fontSize:12 }}>none</span>;
@@ -496,24 +496,24 @@ const isNotInUse = String(row.position||””).toLowerCase().includes(“not in
 const trStyle = { borderBottom:“1px solid rgba(255,255,255,.06)”, background: fi%2===1 ? “rgba(255,255,255,.012)” : “transparent” };
 return (
 <tr key={fi} style={trStyle}>
-{/* Name — dark bar like spreadsheet */}
+{/* Name – dark bar like spreadsheet */}
 <td style={{ …tdStyle, background:”#0a0a0c”, color: row.name ? “#cfcfd6” : “#6b6b75”, fontWeight:500 }}>
-{row.name || <span style={{ fontStyle:“italic” }}>—</span>}
+{row.name || <span style={{ fontStyle:“italic” }}>–</span>}
 </td>
 <td style={tdStyle}><VocalTag vocal={row.vocal}/></td>
 <td style={tdStyle}><InstrTag instrument={row.instrument}/></td>
 <td style={tdStyle}>
 {row.iem ? (
 <span style={{ background:“rgba(255,255,255,.03)”, border:“1px solid rgba(255,255,255,.08)”, borderRadius:5, padding:“4px 10px”, fontFamily:”‘Barlow’,sans-serif”, fontSize:13, display:“inline-block”, minWidth:80 }}>{row.iem}</span>
-) : <span style={{ color:”#6b6b75” }}>—</span>}
+) : <span style={{ color:”#6b6b75” }}>–</span>}
 </td>
 <td style={tdStyle}>
 {row.position ? (
 <span style={{ background:“rgba(255,255,255,.03)”, border:“1px solid rgba(255,255,255,.08)”, borderRadius:5, padding:“4px 10px”, fontFamily:”‘Barlow’,sans-serif”, fontSize:13, color: isNotInUse ? “#6b6b75” : “#f0ede8”, fontStyle: isNotInUse ? “italic” : “normal”, display:“inline-block”, minWidth:140 }}>{row.position}</span>
-) : <span style={{ color:”#6b6b75” }}>—</span>}
+) : <span style={{ color:”#6b6b75” }}>–</span>}
 </td>
 <td style={{ …tdStyle, borderRight:“none” }}>
-<span style={{ fontSize:12, color:”#9a9aa6”, maxWidth:220, display:“block” }}>{row.notes || <span style={{ color:”#6b6b75” }}>—</span>}</span>
+<span style={{ fontSize:12, color:”#9a9aa6”, maxWidth:220, display:“block” }}>{row.notes || <span style={{ color:”#6b6b75” }}>–</span>}</span>
 </td>
 {adminOn && (
 <td style={{ …tdStyle, borderRight:“none”, textAlign:“center” }}>
@@ -558,7 +558,7 @@ return (
 <div style={{ width:“100%”, display:“grid”, gridTemplateColumns:“1fr 1fr” }}>
 
 ```
-  {/* LEFT — Standard Sunday Schedule (permanent) */}
+  {/* LEFT -- Standard Sunday Schedule (permanent) */}
   <div style={{ borderRight:"1px solid rgba(255,255,255,.06)" }}>
     <div style={{ padding:"14px 18px 11px", borderBottom:"1px solid rgba(255,255,255,.06)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
       <span style={{ fontFamily:"'Barlow Condensed',sans-serif", fontSize:14, fontWeight:700, letterSpacing:"0.08em", textTransform:"uppercase" }}>☀️ Standard Sunday Schedule</span>
@@ -590,7 +590,7 @@ return (
     })}
   </div>
 
-  {/* RIGHT — This Week's Services */}
+  {/* RIGHT -- This Week's Services */}
   <div>
     <div style={{ padding:"14px 18px 11px", borderBottom:"1px solid rgba(255,255,255,.06)", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
       <span style={{ fontFamily:"'Barlow Condensed',sans-serif", fontSize:14, fontWeight:700, letterSpacing:"0.08em", textTransform:"uppercase" }}>📅 This Week's Services</span>
@@ -678,7 +678,7 @@ style={{ flex:1, background:”#141418”, border:“1px solid rgba(255,255,255,
 }
 
 /* ══════════════════════════════════════════════════════
-ADMIN — PIN + DRAWER
+ADMIN – PIN + DRAWER
 ══════════════════════════════════════════════════════ */
 /* ══════════════════════════════════════════════════════
 SUPABASE SYNC HOOK
@@ -749,14 +749,14 @@ if(!url){ setSyncState(“error”); setSyncMsg(“Paste your published CSV URL 
 setSyncState(“loading”); setSyncMsg(””);
 
 ```
-// Try multiple proxies in sequence — the sandbox blocks direct fetch,
+// Try multiple proxies in sequence -- the sandbox blocks direct fetch,
 // but when hosted on Vercel/Netlify the direct fetch will work immediately.
 const attempts = [
   // 1. Direct (works when hosted, blocked in claude.ai preview)
   () => fetch(url, { signal: AbortSignal.timeout(8000) }).then(r => r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`))),
   // 2. corsproxy.io
   () => fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(10000) }).then(r => r.ok ? r.text() : Promise.reject()),
-  // 3. allorigins — returns JSON wrapper
+  // 3. allorigins -- returns JSON wrapper
   () => fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(10000) })
           .then(r => r.ok ? r.json() : Promise.reject())
           .then(j => { if(!j.contents) throw new Error("empty"); return j.contents; }),
@@ -773,13 +773,13 @@ for(const attempt of attempts){
 
 if(!raw){
   setSyncState("error");
-  setSyncMsg("⚠️ Sync works when hosted (Vercel/Netlify) — blocked in claude.ai preview. Export CSV manually to test here.");
+  setSyncMsg("⚠️ Sync works when hosted (Vercel/Netlify) -- blocked in claude.ai preview. Export CSV manually to test here.");
   return;
 }
 
 try {
   const rows = parseSheetCSV(raw);
-  if(rows.length === 0) throw new Error("No data rows found — check column headers: Name, Vocal, Instrument, IEM, Position, Notes");
+  if(rows.length === 0) throw new Error("No data rows found -- check column headers: Name, Vocal, Instrument, IEM, Position, Notes");
   setMics(rows);
   setSyncState("success");
   setSyncMsg(`✓ Synced ${rows.length} rows`);
@@ -799,7 +799,7 @@ const syncFromPaste = () => {
 if(!pasteText.trim()){ setPasteMsg(“Paste your CSV text above first.”); return; }
 try {
 const rows = parseSheetCSV(pasteText);
-if(rows.length === 0) throw new Error(“No rows found — check headers: Name, Vocal, Instrument, IEM, Position, Notes”);
+if(rows.length === 0) throw new Error(“No rows found – check headers: Name, Vocal, Instrument, IEM, Position, Notes”);
 setMics(rows);
 setPasteMsg(`✓ Loaded ${rows.length} rows`);
 setLastSync(new Date());
@@ -924,11 +924,11 @@ Last synced: {lastSync.toLocaleTimeString(“en-US”,{hour:“numeric”,minute
 {/* Quick-fill for known sheet */}
 <button onClick={() => { setCsvUrl_(TLC_CSV_URL); onSync(TLC_CSV_URL); }}
 style={{ width:“100%”, padding:“8px 14px”, background:“rgba(201,150,42,.08)”, border:“1px solid rgba(201,150,42,.2)”, borderRadius:8, fontFamily:”‘JetBrains Mono’,monospace”, fontSize:10, letterSpacing:“0.1em”, textTransform:“uppercase”, color:GOLD_LT, cursor:“pointer”, display:“flex”, alignItems:“center”, justifyContent:“center”, gap:6 }}>
-⚡ Quick Sync — Weekend RF Assignments
+⚡ Quick Sync – Weekend RF Assignments
 </button>
 
 ```
-      {/* Manual CSV paste — works in claude.ai preview */}
+      {/* Manual CSV paste -- works in claude.ai preview */}
       <div style={{ marginTop:12, paddingTop:12, borderTop:"1px solid rgba(255,255,255,.06)" }}>
         <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:9, letterSpacing:"0.1em", textTransform:"uppercase", color:"#6b6b75", marginBottom:6 }}>
           📋 Paste CSV manually (works in preview)
@@ -1161,7 +1161,7 @@ return (
 
   {adminOn && (
     <div style={{ padding:"6px 22px", background:"rgba(201,150,42,.08)", borderBottom:"1px solid rgba(201,150,42,.2)", fontFamily:"'JetBrains Mono',monospace", fontSize:9, letterSpacing:"0.14em", textTransform:"uppercase", color:GOLD, textAlign:"center" }}>
-      ⚙ Admin Mode Active — Click tabs to navigate · Click ✏️ on any mic row to edit
+      ⚙ Admin Mode Active -- Click tabs to navigate · Click ✏️ on any mic row to edit
     </div>
   )}
 
@@ -1189,7 +1189,7 @@ return (
 
   <footer style={{ padding:"12px 22px", borderTop:"1px solid rgba(255,255,255,.06)", display:"flex", alignItems:"center", justifyContent:"space-between", gap:12, width:"100%" }}>
     <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#6b6b75" }}>The <strong style={{ color:GOLD }}>Life Church</strong> Production · Richmond, VA</div>
-    <div style={{ fontSize:12, fontStyle:"italic", color:"#6b6b75", textAlign:"center", flex:1 }}>"Whatever you do, work at it with all your heart" — Col 3:23</div>
+    <div style={{ fontSize:12, fontStyle:"italic", color:"#6b6b75", textAlign:"center", flex:1 }}>"Whatever you do, work at it with all your heart" -- Col 3:23</div>
     <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:10, color:"#6b6b75", textAlign:"right" }}>Built for the team</div>
   </footer>
 
